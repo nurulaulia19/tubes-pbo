@@ -24,8 +24,8 @@ public class BiodataService {
         return repository.save(entity);
     }
 
-    public void delete(Long id) {
-        repository.deleteById(id);
+    public void delete(Biodata id) {
+        repository.delete(id);
     }
 
     public Page<Biodata> list(Pageable pageable) {

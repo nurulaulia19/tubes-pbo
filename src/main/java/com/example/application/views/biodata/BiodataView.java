@@ -50,9 +50,11 @@ public class BiodataView extends Div implements BeforeEnterObserver {
     private TextField noHp;
     private TextField alamat;
     private Checkbox important;
+    
 
     private final Button cancel = new Button("Cancel");
     private final Button save = new Button("Save");
+    private final Button delete = new Button("Delete");
 
     private final BeanValidationBinder<Biodata> binder;
 
@@ -115,6 +117,24 @@ public class BiodataView extends Div implements BeforeEnterObserver {
             clearForm();
             refreshGrid();
         });
+        delete.addClickListener(e -> {
+            try {
+                if (this.biodata == null) {
+                    Notification.show("No biodata selected!");
+                } else {
+                    binder.writeBean(this.biodata);
+    
+                    biodataService.delete(this.biodata);
+                    clearForm();
+                    refreshGrid();
+                    Notification.show("biodata details stored.");
+                    UI.getCurrent().navigate(BiodataView.class);
+                }
+            } catch(ValidationException validationException){
+                Notification.show("An exception happened while trying to store the Biodata detail");
+            }
+            }   
+        );
 
         save.addClickListener(e -> {
             try {
@@ -184,9 +204,10 @@ public class BiodataView extends Div implements BeforeEnterObserver {
     private void createButtonLayout(Div editorLayoutDiv) {
         HorizontalLayout buttonLayout = new HorizontalLayout();
         buttonLayout.setClassName("button-layout");
+        delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
         cancel.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        buttonLayout.add(save, cancel);
+        buttonLayout.add(save, cancel, delete);
         editorLayoutDiv.add(buttonLayout);
     }
 
