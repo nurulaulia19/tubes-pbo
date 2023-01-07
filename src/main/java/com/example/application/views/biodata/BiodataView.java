@@ -25,12 +25,14 @@ import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouteAlias;
 import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 import java.util.Optional;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 
 @PageTitle("Biodata")
+@RouteAlias(value = "", layout = MainLayout.class)
 @Route(value = "biodata/:biodataID?/:action?(edit)", layout = MainLayout.class)
 @Uses(Icon.class)
 public class BiodataView extends Div implements BeforeEnterObserver {
