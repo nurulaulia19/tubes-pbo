@@ -54,7 +54,7 @@ public class MainLayout extends AppLayout {
         AppNav nav = new AppNav();
 
         nav.addItem(new AppNavItem("Hello World", HelloWorldView.class, "la la-globe"));
-        nav.addItem(new AppNavItem("Biodata", BiodataView.class, "la la-columns"));
+        nav.addItem(new AppNavItem("Biodata Sadari", BiodataView.class, "la la-columns"));
 
         return nav;
     }
