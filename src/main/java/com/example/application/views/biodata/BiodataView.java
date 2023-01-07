@@ -6,7 +6,7 @@ import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
-import com.vaadin.flow.component.checkbox.Checkbox;
+// import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dependency.Uses;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -22,7 +22,7 @@ import com.vaadin.flow.component.splitlayout.SplitLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.ValidationException;
-import com.vaadin.flow.data.renderer.LitRenderer;
+// import com.vaadin.flow.data.renderer.LitRenderer;
 import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
@@ -49,7 +49,7 @@ public class BiodataView extends Div implements BeforeEnterObserver {
     private TextField pendidikan;
     private TextField noHp;
     private TextField alamat;
-    private Checkbox important;
+    // private Checkbox important;
     
 
     private final Button cancel = new Button("Cancel");
@@ -82,14 +82,14 @@ public class BiodataView extends Div implements BeforeEnterObserver {
         grid.addColumn("pendidikan").setAutoWidth(true);
         grid.addColumn("noHp").setAutoWidth(true);
         grid.addColumn("alamat").setAutoWidth(true);
-        LitRenderer<Biodata> importantRenderer = LitRenderer.<Biodata>of(
-                "<vaadin-icon icon='vaadin:${item.icon}' style='width: var(--lumo-icon-size-s); height: var(--lumo-icon-size-s); color: ${item.color};'></vaadin-icon>")
-                .withProperty("icon", important -> important.isImportant() ? "check" : "minus").withProperty("color",
-                        important -> important.isImportant()
-                                ? "var(--lumo-primary-text-color)"
-                                : "var(--lumo-disabled-text-color)");
+        // LitRenderer<Biodata> importantRenderer = LitRenderer.<Biodata>of(
+        //         "<vaadin-icon icon='vaadin:${item.icon}' style='width: var(--lumo-icon-size-s); height: var(--lumo-icon-size-s); color: ${item.color};'></vaadin-icon>")
+        //         .withProperty("icon", important -> important.isImportant() ? "check" : "minus").withProperty("color",
+        //                 important -> important.isImportant()
+        //                         ? "var(--lumo-primary-text-color)"
+        //                         : "var(--lumo-disabled-text-color)");
 
-        grid.addColumn(importantRenderer).setHeader("Important").setAutoWidth(true);
+        // grid.addColumn(importantRenderer).setHeader("Important").setAutoWidth(true);
 
         grid.setItems(query -> biodataService.list(
                 PageRequest.of(query.getPage(), query.getPageSize(), VaadinSpringDataHelpers.toSpringDataSort(query)))
@@ -192,8 +192,8 @@ public class BiodataView extends Div implements BeforeEnterObserver {
         pendidikan = new TextField("Pendidikan");
         noHp = new TextField("No Hp");
         alamat = new TextField("Alamat");
-        important = new Checkbox("Important");
-        formLayout.add(nik, nama, puskemas, tanggalLahir, pendidikan, noHp, alamat, important);
+        // important = new Checkbox("Important");
+        formLayout.add(nik, nama, puskemas, tanggalLahir, pendidikan, noHp, alamat);
 
         editorDiv.add(formLayout);
         createButtonLayout(editorLayoutDiv);
